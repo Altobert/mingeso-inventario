@@ -9,4 +9,4 @@ spring:
         git:
           default-label: main
           uri: https://github.com/Altobert/mingeso-inventario     
-          search-paths: "config-data"
+          search-paths: "config-data"     
