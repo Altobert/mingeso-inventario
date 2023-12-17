@@ -38,6 +38,7 @@ Funcionalidades
 		ver los prestamos realizados de los data proyectores
 		si se selecciona un data proyector, mostrar todos sus arriendos
 		listado ordenado por fecha de prestamo y por hora
+		(Reporte solo mostrar lo grabado)
 		Reporte debe contener
 			fecha prestamo
 			hora prestamo
@@ -64,21 +65,43 @@ Funcionalidades
 
 				reporte prestamos
 
-			Cada microservicio con @RestController, @Service, @Repository
+			Cada microservicio con @RestController, @Service, @Repository (ok)
 
-			Puertos estaticos para cada microservicio
+			Puertos estaticos para cada microservicio (ok)
 
-			Configurar: ConfigServer y ApiGateWay
+			Configurar: ConfigServer y ApiGateWay (ok)
 
 
 
 	----
+	mvn spring-boot:run
 
 	grafo que conecte a todos los vertices
 	arbol recubridor minimo
 	aristas 
 	inicio spring boot terminal mvn spring-boot:run
 	---
+
+	<groupId>cl.mingeso</groupId>
+	<artifactId>api-gateway</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>api-gateway</name>
+	<description>Demo project for Spring Boot</description>
+
+
+	<groupId>cl.mingeso</groupId>
+	<artifactId>ms-ingreso</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ms-ingreso</name>
+	<description>Demo project for Spring Boot</description>
+
+
+	<groupId>cl.mingeso</groupId>
+	<artifactId>ms-gestion</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ms-gestion</name>
+	<description>Demo project for Spring Boot</description>
+
 
 	<groupId>cl.mingeso</groupId>
 	<artifactId>ms-reportes</artifactId>
