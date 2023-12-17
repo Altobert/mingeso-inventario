@@ -31,10 +31,12 @@ spring:
           uri: lb://ms-gestion
           predicates:
             - Path=/gestion/**
+
         - id: ms-ingreso
           uri: lb://ms-ingreso
           predicates:
             - Path=/ingreso/**
+            
         - id: ms-reportes
           uri: lb://ms-reportes
           predicates:
