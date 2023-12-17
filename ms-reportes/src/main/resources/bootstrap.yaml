@@ -17,7 +17,7 @@ spring:
   datasource:
     plataform: postgres
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/topeducationcuotas 
+    url: jdbc:postgresql://localhost:5432/prestamosdiinf
     username: postgres
     password: 270980
 

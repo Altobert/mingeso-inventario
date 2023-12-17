@@ -9,7 +9,7 @@ Funcionalidades
 		con daños o sin daños
 		contador daños * 3  (inabilitado para pedir prestamos)
 
-	gestionar prestamos
+	gestionar prestamos (ok)
 		fecha
 		hora 
 		profesor
@@ -25,14 +25,15 @@ Funcionalidades
 		si proyector es viewSonic
 			solo para reuniones varias
 
-	gestionar devoluciones
+	//
+	gestionar devoluciones (ok)
 		 fecha devolucion
 		 hora devolucion
 		 estado devolucion {en buenas condiciones o con daños}
 		 	si profesor devuelve con daños > 2
 		 		queda inabilitado
 
-
+    /Reporte 		 		
 	encargado o administrador
 		ver los prestamos realizados de los data proyectores
 		si se selecciona un data proyector, mostrar todos sus arriendos
@@ -76,7 +77,12 @@ Funcionalidades
 	grafo que conecte a todos los vertices
 	arbol recubridor minimo
 	aristas 
+	inicio spring boot terminal mvn spring-boot:run
+	---
 
-
-
+	<groupId>cl.mingeso</groupId>
+	<artifactId>ms-reportes</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ms-reportes</name>
+	<description>Demo project for Spring Boot</description>
 
