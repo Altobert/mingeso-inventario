@@ -1,0 +1,82 @@
+
+control de los data proyectores que tiene Diinf
+epson (7) y viewsonic (5)
+
+Funcionalidades 
+	
+	Profesor:
+		nombre profesor
+		con daños o sin daños
+		contador daños * 3  (inabilitado para pedir prestamos)
+
+	gestionar prestamos
+		fecha
+		hora 
+		profesor
+		uso que se le dara {clases reuniones examenes de titulo}
+		proyector
+			no puede quedar prestado por mas de 6 horas.
+				si lo anterior ocurre, 
+					no puede pedir hasta proxima semana
+
+		si proyector es epson
+			solo para clases y examen de titulo
+
+		si proyector es viewSonic
+			solo para reuniones varias
+
+	gestionar devoluciones
+		 fecha devolucion
+		 hora devolucion
+		 estado devolucion {en buenas condiciones o con daños}
+		 	si profesor devuelve con daños > 2
+		 		queda inabilitado
+
+
+	encargado o administrador
+		ver los prestamos realizados de los data proyectores
+		si se selecciona un data proyector, mostrar todos sus arriendos
+		listado ordenado por fecha de prestamo y por hora
+		Reporte debe contener
+			fecha prestamo
+			hora prestamo
+			profesor a quien presto
+			fecha devolucion
+			hora devolucion
+			numero de horas
+			estado en que fue devuelto
+			uso que se le dio al projector
+
+
+	frontend
+		ReactJs
+		Buen diseño para una adecuada funcionalidad
+		considerar 10 euristicas de nielsen.
+
+	backend
+			3 microservicios, para implementar lo siguiente:
+				Ingreso data projectores
+				Ingreso profesores
+
+				Gestion de prestamos
+				Gestion devoluciones
+
+				reporte prestamos
+
+			Cada microservicio con @RestController, @Service, @Repository
+
+			Puertos estaticos para cada microservicio
+
+			Configurar: ConfigServer y ApiGateWay
+
+
+
+	----
+
+	grafo que conecte a todos los vertices
+	arbol recubridor minimo
+	aristas 
+
+
+
+
