@@ -30,7 +30,7 @@ export function Sidebar({ sidebarOpen, setSidebarOpen }) {
         <div className="imgcontent">
           <img src={logo} />
         </div>
-        <h2>Menú Asignaturas</h2>
+        <h2>Proyectores DIINF</h2>
       </div>
       {linksArray.map(({ icon, label, to }) => (
         <div className="LinkContainer" key={label}>
