@@ -82,29 +82,31 @@ export function Sidebar({ sidebarOpen, setSidebarOpen }) {
 //#region Data links
 const linksArray = [
   {
-    label: "Aprobadas",
+    label: "Registrar Prestamo",
     icon: <AiOutlineHome />,
     to: "/aprobadas",
   },
   {
-    label: "Inscritas",
+    label: "Devoluciones",
     icon: <MdOutlineAnalytics />,
     to: "/inscritas",
   },
-  {
-    label: "Por Inscribir",
+  /*{
+    label: "Reportes",
     icon: <AiOutlineApartment />,
     to: "/porinscribir",
-  },
+  },*/
+  /*
   {
     label: "Historial Notas",
     icon: <MdOutlineAnalytics />,
     to: "/historialnotas",
   },
+  */
   {
     label: "Reportes",
-    icon: <MdOutlineAnalytics />,
-    to: "/reportes",
+    icon: <AiOutlineApartment />,
+    to: "/porinscribir",
   },
 ];
 const secondarylinksArray = [
