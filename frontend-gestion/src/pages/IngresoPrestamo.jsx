@@ -1,22 +1,73 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+import PrestamoService from '../services/PrestamoService';
 
 const IngresoPrestamo = () => {
+
+    const initialState = {
+        profesor: '',
+        fecha: '',
+        hora: '',
+        motivoArriendo: '',
+        horasArriendo: '',
+        proyector: '',
+    }
+
     const [proyector, setProyector] = useState('');
 
     const handleProyectorChange = (event) => {
         setProyector(event.target.value);
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Perform the logic to register the loan for the projector
-        // You can use the 'proyector' state variable to access the selected projector
+    const navigate = useNavigate();
+    const navigateHome = () => {
+        navigate("/");
+    };
+
+    const ingresarPrestamo = (prestamo) => {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "Se ingresará un nuevo préstamo",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33', 
+            confirmButtonText: 'Si, ingresar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(prestamo);
+                let nuevoPrestamo = {
+                    profesor: prestamo.profesor,
+                    fecha: prestamo.fecha,
+                    hora: prestamo.hora,
+                    motivoArriendo: prestamo.motivoArriendo,
+                    horasArriendo: prestamo.horasArriendo,
+                    proyector: prestamo.proyector,
+                };
+                console.log(nuevoPrestamo);
+                PrestamoService.registrarPrestamo(nuevoPrestamo);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Prestamo ingresado correctamente',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    didOpen: () => {
+                        setTimeout(() => {
+                            navigateHome();
+                        }, 1500);
+                    }
+
+                })
+            }
+
+            });
     };
 
     return (
         <div>
             <h1>Registrar Préstamo de Proyector</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={ingresarPrestamo}>
                 <label htmlFor="profesor">Nombre Profesor:</label>
                 <input type="text" id="profesor" />
 

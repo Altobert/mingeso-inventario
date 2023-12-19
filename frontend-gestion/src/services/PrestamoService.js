@@ -12,17 +12,9 @@ class PrestamoService {
         return axios.post(PRESTAMO_API_URL, prestamo);
     }
     
-    /*getEstudiantes(){
-        return axios.get(PRESTAMO_API_URL);
-    }*/
-
-    /*getEstudianteByRut(rut){
-        return axios.get(ESTUDIANTE_API_URL + rut);
-    }*/
-
-    /*createEstudiante(estudiante){
-        return axios.post(ESTUDIANTE_API_URL, estudiante);
-    }*/
+    getPrestamoById(id){
+        return axios.get(PRESTAMO_API_URL + id);
+    }
 }
 
 export default new PrestamoService()

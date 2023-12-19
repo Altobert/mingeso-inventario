@@ -3,8 +3,6 @@ package cl.mingeso.msingreso.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netflix.discovery.converters.Auto;
-
 import cl.mingeso.msingreso.entity.Prestamo;
 import cl.mingeso.msingreso.repository.PrestamoRepository;
 
