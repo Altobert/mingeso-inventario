@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PRESTAMO_API_URL = "http://localhost:8080/prestamo/";
+const PRESTAMO_API_URL = "http://localhost:8085/prestamo/";
 
 class PrestamoService {
 
@@ -12,9 +12,6 @@ class PrestamoService {
         return axios.post(PRESTAMO_API_URL, prestamo);
     }
     
-    getPrestamoById(id){
-        return axios.get(PRESTAMO_API_URL + id);
-    }
 }
 
 export default new PrestamoService()

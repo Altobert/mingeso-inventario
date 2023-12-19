@@ -15,21 +15,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 public class RegisterController {
 
-    //registrar prestamo de proyector
-    //registrar profesor
-    //registrar fecha de reserva
-    //registrar hora de reserva
-
     @Autowired
     private PrestamoService prestamoService;
 
     @PostMapping("/")
-    public ResponseEntity<Prestamo> postMethodName(@RequestBody Prestamo prestamo) {
-        //TODO: process POST request
+    public ResponseEntity<Prestamo> registrarPrestamo(/*@RequestBody Prestamo prestamo*/){
+        Prestamo prestamo = new Prestamo();
+        prestamo.setIdPrestamo(1);
+        prestamo.setIdProfesor(1);
+        prestamo.setIdProyector(1);
+
         prestamoService.savePrestamo(prestamo);
         return null;
     }
     
-
-
 }

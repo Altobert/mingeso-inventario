@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import PrestamoService from '../services/PrestamoService';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-const IngresoPrestamo = () => {
+const IngresoPrestamo = (props) => {
 
     const initialState = {
         profesor: '',
@@ -14,26 +16,27 @@ const IngresoPrestamo = () => {
         proyector: '',
     }
 
-    const [proyector, setProyector] = useState('');
-
-    const handleProyectorChange = (event) => {
-        setProyector(event.target.value);
-    };
+    const [prestamo, setPrestamo] = useState(initialState);
 
     const navigate = useNavigate();
     const navigateHome = () => {
         navigate("/");
     };
 
+    const changeFechaHandler = event => {
+        setPrestamo({ ...prestamo, fecha: event.target.value });
+    };
+
     const ingresarPrestamo = (prestamo) => {
         Swal.fire({
-            title: '¿Estás seguro?',
-            text: "Se ingresará un nuevo préstamo",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33', 
-            confirmButtonText: 'Si, ingresar'
+            title: "¿Desea registrar un prestamo?",
+            text: "No podra cambiarse en caso de equivocación",
+            icon: "question",
+            showDenyButton: true,
+            confirmButtonText: "Confirmar",
+            confirmButtonColor: "rgb(68, 194, 68)",
+            denyButtonText: "Cancelar",
+            denyButtonColor: "rgb(190, 54, 54)",
         }).then((result) => {
             if (result.isConfirmed) {
                 console.log(prestamo);
@@ -48,59 +51,30 @@ const IngresoPrestamo = () => {
                 console.log(nuevoPrestamo);
                 PrestamoService.registrarPrestamo(nuevoPrestamo);
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Prestamo ingresado correctamente',
-                    showConfirmButton: false,
-                    timer: 1500,
+                    title: "Enviado",
+                    timer: 2000,
+                    icon: "success",
+                    timerProgressBar: true,
                     didOpen: () => {
-                        setTimeout(() => {
-                            navigateHome();
-                        }, 1500);
-                    }
-
+                        Swal.showLoading();
+                    },
                 })
+                navigateHome();
             }
 
-            });
+        });
     };
 
     return (
         <div>
             <h1>Registrar Préstamo de Proyector</h1>
-            <form onSubmit={ingresarPrestamo}>
-                <label htmlFor="profesor">Nombre Profesor:</label>
-                <input type="text" id="profesor" />
-
-                <label htmlFor="fecha">Fecha:</label>   
-                <input type="date" id="fecha" />
-                <br />
-
-                <label htmlFor="hora">Hora:</label>
-                <input type="time" id="hora" />
-                <br />
-
-                <label htmlFor="motivoArriendo">Motivos Prestamo:</label>
-                <select id="motivoArriendo" name="motivoArriendo">
-                    <option value="clases" selected="true">Clases</option>
-                    <option value="reunion">Reunion</option>
-                    <option value="examen">Examen</option>    
-                </select>
-                <br />
-
-                <label htmlFor="horasArriendo">Horas de arriendo:</label>
-                <input type="number" id="horasArriendo" />
-                <br />
-                
-                <label htmlFor="proyector">Elegir Proyector:</label>
-                <select id="proyector" name="proyector">
-                    <option value="epson" selected="true">Epson</option>
-                    <option value="viewsonic">ViewSonic</option>
-                    <option value="benq">BenQ</option>    
-                </select>
-                <br />
-
-                <button type="submit">Registrar Préstamo</button>
-            </form>
+            <Form>
+                <Form.Group className="mb-3" controlId="fecha" value={prestamo.fecha} onChange={changeFechaHandler}>
+                    <Form.Label>Fecha</Form.Label>
+                    <Form.Control type="date" placeholder="Fecha" />
+                </Form.Group>
+                <Button className="boton" onClick={ingresarPrestamo}>Registrar Prestamo</Button>
+            </Form>
         </div>
     );
 };
