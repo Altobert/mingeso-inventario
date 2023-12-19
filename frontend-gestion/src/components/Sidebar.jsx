@@ -84,12 +84,12 @@ const linksArray = [
   {
     label: "Registrar Prestamo",
     icon: <AiOutlineHome />,
-    to: "/aprobadas",
+    to: "/prestamo",
   },
   {
     label: "Devoluciones",
     icon: <MdOutlineAnalytics />,
-    to: "/inscritas",
+    to: "/devolucion",
   },
   /*{
     label: "Reportes",
@@ -106,7 +106,7 @@ const linksArray = [
   {
     label: "Reportes",
     icon: <AiOutlineApartment />,
-    to: "/porinscribir",
+    to: "/reporte",
   },
 ];
 const secondarylinksArray = [
