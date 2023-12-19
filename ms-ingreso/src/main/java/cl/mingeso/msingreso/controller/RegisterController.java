@@ -8,17 +8,21 @@ import cl.mingeso.msingreso.services.PrestamoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RestController
+@RequestMapping("/ingreso")
 public class RegisterController {
 
     @Autowired
     private PrestamoService prestamoService;
 
     @PostMapping("/")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Prestamo> registrarPrestamo(/*@RequestBody Prestamo prestamo*/){
         Prestamo prestamo = new Prestamo();
         prestamo.setIdPrestamo(1);
