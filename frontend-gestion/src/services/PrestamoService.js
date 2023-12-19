@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-const PRESTAMO_API_URL = "http://localhost:8085/prestamo/";
+const INGRESO_PRESTAMO_API_URL = "http://localhost:8085/ingreso/";
 
 class PrestamoService {
 
     getPrestamos(){
-        return axios.get(PRESTAMO_API_URL);
+        return axios.get(INGRESO_PRESTAMO_API_URL);
     }
 
     registrarPrestamo(prestamo){
-        return axios.post(PRESTAMO_API_URL, prestamo);
+        return axios.post(INGRESO_PRESTAMO_API_URL, prestamo);
     }
     
 }
