@@ -5,12 +5,13 @@ import PrestamoService from '../services/PrestamoService';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const IngresoPrestamo = (props) => {
+//const IngresoPrestamo = (props) => {
+ function IngresoPrestamo(props){
 
     const initialState = {
-        profesor: '',
         fecha: '',
         hora: '',
+        profesor: '',
         motivoArriendo: '',
         horasArriendo: '',
         proyector: '',
@@ -23,10 +24,15 @@ const IngresoPrestamo = (props) => {
         navigate("/");
     };
 
-    const changeFechaHandler = event => {
+    /*const changeFechaHandler = event => {
         setPrestamo({ ...prestamo, fecha: event.target.value });
     };
 
+    const changeHorasArriendoHandler = event => {
+        setPrestamo({ ...prestamo, horasArriendo: event.target.value });
+    };*/
+
+    
     const ingresarPrestamo = (prestamo) => {
         Swal.fire({
             title: "¿Desea registrar un prestamo?",
@@ -69,12 +75,23 @@ const IngresoPrestamo = (props) => {
         <div>
             <h1>Registrar Préstamo de Proyector</h1>
             <Form>
-                <Form.Group className="mb-3" controlId="fecha" value={prestamo.fecha} onChange={changeFechaHandler}>
+                <Form.Group className="mb-3" controlId="fecha" value={prestamo.fecha}>
                     <Form.Label>Fecha</Form.Label>
                     <Form.Control type="date" placeholder="Fecha" />
                 </Form.Group>
+
+                <Form.Group className="mb-3" controlId="hora" value={prestamo.hora} >
+                    <Form.Label>Hora</Form.Label>
+                    <Form.Control type="time" placeholder="Hora" />
+                </Form.Group>
+
                 <Button className="boton" onClick={ingresarPrestamo}>Registrar Prestamo</Button>
             </Form>
+
+            
+
+            
+
         </div>
     );
 };
