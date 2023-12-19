@@ -28,7 +28,6 @@ const IngresoPrestamo = () => {
                 <input type="time" id="hora" />
                 <br />
 
-                
                 <label htmlFor="motivoArriendo">Motivos Prestamo:</label>
                 <select id="motivoArriendo" name="motivoArriendo">
                     <option value="clases" selected="true">Clases</option>
