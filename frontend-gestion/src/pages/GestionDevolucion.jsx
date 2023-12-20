@@ -65,7 +65,7 @@ function RegistroDevolucionProyector(props){
 
     
     return (
-        <div>
+        <div align="center">
             <h1>Reporte de Préstamos Realizados</h1>
             <Form>
                 <Form.Group className="mb-3" controlId="fecha" value={devolucion.fecha}>

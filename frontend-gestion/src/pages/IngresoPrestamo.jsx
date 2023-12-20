@@ -58,7 +58,7 @@ import Button from 'react-bootstrap/Button';
     };
     
     
-    const ingresarPrestamo = (prestamo) => {
+    const ingresarPrestamo = (event) => {
         Swal.fire({
             title: "¿Desea registrar un prestamo?",
             text: "No podra cambiarse en caso de equivocación",

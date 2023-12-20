@@ -20,7 +20,7 @@ const ReporteDevolucionProyectores = () => {
     };
 
     return (
-        <div>
+        <div align="center">
             <h1>Reporte de Préstamos Realizados</h1>
             <table>
                 <thead>
