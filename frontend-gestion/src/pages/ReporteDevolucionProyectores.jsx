@@ -1,5 +1,7 @@
+import '../App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 
 const ReporteDevolucionProyectores = () => {
     const [loanData, setLoanData] = useState([]);

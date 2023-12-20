@@ -81,34 +81,7 @@ Funcionalidades
 	aristas 
 	inicio spring boot terminal mvn spring-boot:run
 	---
-
-	<groupId>cl.mingeso</groupId>
-	<artifactId>api-gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>api-gateway</name>
-	<description>Demo project for Spring Boot</description>
-
-
-	<groupId>cl.mingeso</groupId>
-	<artifactId>ms-ingreso</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>ms-ingreso</name>
-	<description>Demo project for Spring Boot</description>
-
-
-	<groupId>cl.mingeso</groupId>
-	<artifactId>ms-gestion</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>ms-gestion</name>
-	<description>Demo project for Spring Boot</description>
-
-
-	<groupId>cl.mingeso</groupId>
-	<artifactId>ms-reportes</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>ms-reportes</name>
-	<description>Demo project for Spring Boot</description>
-
+	
 	------------------
 
 	Success! Created frontend-gestion at /home/asmubuntu/Documentos/mingeso-inventario/frontend-gestion
