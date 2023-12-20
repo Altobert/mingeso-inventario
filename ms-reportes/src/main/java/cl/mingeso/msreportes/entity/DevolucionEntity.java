@@ -13,7 +13,16 @@ import lombok.NoArgsConstructor;
 @Data
 public class DevolucionEntity {
 
-    
-    
+    private Integer id;
+    private Date fechaDevolucion;
+    private Date horaDevolucion;
+    private String estadoDevolucion;
+    /*
+     * estado devolucion {en buenas condiciones o con daños}
+		 	si profesor devuelve con daños > 2
+		 		queda inabilitado para pedir prestamos 
+     */
+    private Integer contadorDanos;
+    private String proyector;
 
 }
