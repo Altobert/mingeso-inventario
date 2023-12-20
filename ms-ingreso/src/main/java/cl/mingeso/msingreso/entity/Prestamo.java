@@ -13,25 +13,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
+
 @Entity
+@Table(name = "prestamo")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Getter
-@Setter
-@Table(name = "prestamo")
-public class Prestamo {
+public class Prestamo{
 
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    Date fechaPrestamo;
-    Date horaPrestamo;
-    String descripcionUso;
-    Integer cantidadHoras;
-    String marcaProyector;    
+    private Long id;
+    private Date fechaPrestamo;
+    private Date horaPrestamo;
+    private String descripcionUso;
+    private String cantidadHoras;
+    private String marcaProyector;    
+    private String profesor;
 
 }

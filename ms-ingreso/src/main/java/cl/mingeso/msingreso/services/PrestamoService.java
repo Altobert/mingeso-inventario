@@ -13,7 +13,7 @@ public class PrestamoService {
     private PrestamoRepository prestamoRepository;
     
     public void savePrestamo(Prestamo prestamo) {
-        prestamoRepository.save(prestamo);
+        prestamoRepository.save(prestamo);        
         System.out.println("Prestamo guardado");
     }
 

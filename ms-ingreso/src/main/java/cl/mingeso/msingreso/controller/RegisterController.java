@@ -2,7 +2,6 @@ package cl.mingeso.msingreso.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.mingeso.msingreso.dto.PrestamoDto;
 import cl.mingeso.msingreso.entity.Prestamo;
 import cl.mingeso.msingreso.services.PrestamoService;
 
@@ -20,11 +19,22 @@ public class RegisterController {
 
     @Autowired
     private PrestamoService prestamoService;
-
-    @PostMapping("/")
+    
+    @PostMapping()
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Prestamo> registrarPrestamo(@RequestBody Prestamo prestamo){
         Prestamo newprestamo = new Prestamo();
+        Integer idContador = 0;
+        idContador++;
+
+        Integer cantidadRegistros = prestamoService.countPrestamo();
+        if (cantidadRegistros == 0) {
+            idContador = 1;            
+        }else{
+            idContador = cantidadRegistros + 1;
+        }
+
+        newprestamo.setId(cantidadRegistros.longValue() + 1);
         newprestamo.setFechaPrestamo(prestamo.getFechaPrestamo());
         newprestamo.setHoraPrestamo(prestamo.getHoraPrestamo());
         newprestamo.setDescripcionUso(prestamo.getDescripcionUso());
@@ -32,7 +42,7 @@ public class RegisterController {
         newprestamo.setMarcaProyector(prestamo.getMarcaProyector());
         prestamoService.savePrestamo(newprestamo);
                 
-        return null;
+        return ResponseEntity.ok(newprestamo);
     }
     
 }

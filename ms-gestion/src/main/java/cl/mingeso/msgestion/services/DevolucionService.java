@@ -11,10 +11,15 @@ public class DevolucionService {
 
     @Autowired
     DevolucionRepository devolucionRepository;
-
+    //registrar devolucion
     public void registrarDevolucion(Devolucion devolucion) {
         devolucionRepository.save(devolucion);
         System.out.println("Devolucion registrada");
+    }
+
+    //obtenerCantidadDevoluciones
+    public Integer obtenerCantidadDevoluciones() {
+        return devolucionRepository.findAll().size();
     }
 
 }

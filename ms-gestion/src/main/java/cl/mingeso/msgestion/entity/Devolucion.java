@@ -24,15 +24,16 @@ public class Devolucion {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-    Date fechaDevolucion;
-    Date horaDevolucion;
-    String estadoDevolucion;
+    private Integer id;
+    private Date fechaDevolucion;
+    private Date horaDevolucion;
+    private String estadoDevolucion;
     /*
      * estado devolucion {en buenas condiciones o con daños}
 		 	si profesor devuelve con daños > 2
 		 		queda inabilitado para pedir prestamos 
      */
-    Integer contadorDanos;
+    private Integer contadorDanos;
+    private String proyector;
     
 }

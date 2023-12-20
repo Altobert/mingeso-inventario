@@ -5,8 +5,8 @@ import PrestamoService from '../services/PrestamoService';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-//const IngresoPrestamo = (props) => {
- function IngresoPrestamo(props){
+
+function IngresoPrestamo(props){
 
     const initialState = {
         
@@ -28,18 +28,15 @@ import Button from 'react-bootstrap/Button';
     };
 
     const changeHorasHandler = event => {
-        setPrestamo({ ...prestamo, cantidadHoras: event.target.value });
-        alert(prestamo.cantidadHoras);
+        setPrestamo({ ...prestamo, cantidadHoras: event.target.value });        
     };
 
     const changeUsoHandler = event => {
-        setPrestamo({ ...prestamo, descripcionUso: event.target.value });
-        alert(prestamo.descripcionUso);
+        setPrestamo({ ...prestamo, descripcionUso: event.target.value });        
     };
 
     const changefechaPrestamoHandler = event => {
-        setPrestamo({ ...prestamo, fechaPrestamo: event.target.value });
-        alert(prestamo.fechaPrestamo);
+        setPrestamo({ ...prestamo, fechaPrestamo: event.target.value });        
     };
 
     const changehoraPrestamoHandler = event => {
@@ -48,13 +45,11 @@ import Button from 'react-bootstrap/Button';
     };
 
     const changeMarcaHandler = event => {
-        setPrestamo({ ...prestamo, marcaProyector: event.target.value });
-        alert(prestamo.marcaProyector);
+        setPrestamo({ ...prestamo, marcaProyector: event.target.value });        
     };
 
     const changeProfesorHandler = event => {
-        setPrestamo({ ...prestamo, profesor: event.target.value });
-        alert(prestamo.profesor);
+        setPrestamo({ ...prestamo, profesor: event.target.value });        
     };
     
     

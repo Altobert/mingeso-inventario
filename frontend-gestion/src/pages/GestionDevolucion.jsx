@@ -8,27 +8,41 @@ import Swal from 'sweetalert2';
 function RegistroDevolucionProyector(props){
 
     const initialState = {
-        fecha: '',
-        hora: '',
-        estadoDevolucion: ''        
+        
+        id:'0',
+        estadoDevolucion:'',
+        fechaDevolucion:'',
+        horaDevolucion:'',
+        contadorDanos:'',
+        proyector:''
     }
 
-    const [devolucion, setLoanData] = useState(initialState);
+    const [devolucion, setDevolucion] = useState(initialState);
 
-    /*useEffect(() => {
-        fetchLoanData();
-    }, []);*/
 
-    /*const fetchLoanData = async () => {
-        try {
-            const response = await axios.get('/api/loans');
-            setLoanData(response.data);
-        } catch (error) {
-            console.error('Error fetching loan data:', error);
-        }
-    };*/
+    const changeFechaPrestamoHandler = event => {
+        setDevolucion({ ...devolucion, fechaDevolucion: event.target.value });        
+    };
 
-    const ingresarDevolucion = (devolucion) => {
+    const changeHoraPrestamoHandler = event => {
+        setDevolucion({ ...devolucion, horaDevolucion: event.target.value });
+    };
+
+    const changeEstadoDevolucionHandler = event => {
+        setDevolucion({ ...devolucion, estadoDevolucion: event.target.value });
+    };
+
+    const changeContadorDanosHandler = event => {
+        setDevolucion({ ...devolucion, contadorDanos: event.target.value });
+    };
+
+    const changeProyectorHandler = event => {
+        setDevolucion({ ...devolucion, proyector: event.target.value });
+    };
+
+    
+
+    const ingresarDevolucion = (event) => {
         Swal.fire({
             title: "¿Desea registrar una devolucion?",
             text: "No podra cambiarse en caso de equivocación",
@@ -42,9 +56,12 @@ function RegistroDevolucionProyector(props){
             if (result.isConfirmed) {
                 console.log(devolucion);
                 let nuevaDevolucion = {
-                    fecha: devolucion.fecha,
-                    hora: devolucion.hora,
-                    estadoDevolucion: devolucion.estadoDevolucion
+                    id: devolucion.id,
+                    fechaPrestamo: devolucion.fechaDevolucion,
+                    horaPrestamo: devolucion.horaDevolucion,
+                    estadoDevolucion: devolucion.estadoDevolucion,
+                    contadorDanos: devolucion.contadorDanos,
+                    proyector:devolucion.proyector
                 };
                 console.log(nuevaDevolucion);
                 DevolucionService.registrarDevolucion(nuevaDevolucion);
@@ -54,9 +71,16 @@ function RegistroDevolucionProyector(props){
                     icon: "success",
                     confirmButtonColor: "rgb(68, 194, 68)",
                 }).then((result) => {
-                    if (result.isConfirmed) {
-                        //navigateHome();
-                        //
+                    if (result.isConfirmed) {                        
+                        Swal.fire({
+                            title: "¿Desea registrar otra devolucion?",                            
+                            icon: "success",
+                            showDenyButton: true,
+                            confirmButtonText: "Confirmar",
+                            confirmButtonColor: "rgb(68, 194, 68)",
+                            denyButtonText: "Cancelar",
+                            denyButtonColor: "rgb(190, 54, 54)",
+                        });
                     }
                 });
             }
@@ -66,25 +90,39 @@ function RegistroDevolucionProyector(props){
     
     return (
         <div align="center">
-            <h1>Reporte de Préstamos Realizados</h1>
+            <h1>Reporte de Devolución</h1>
             <Form>
-                <Form.Group className="mb-3" controlId="fecha" value={devolucion.fecha}>
-                    <Form.Label>Fecha</Form.Label>
+                <Form.Group className="mb-3" controlId="fechaDevolucion" value={devolucion.fechaDevolucion} onChange={changeFechaPrestamoHandler}>
+                    <Form.Label>Fecha Devolucion</Form.Label>
                     <Form.Control type="date" placeholder="Fecha" />
                 </Form.Group>
                 <br></br>
-                <Form.Group className="mb-3" controlId="hora" value={devolucion.hora} >
+                <Form.Group className="mb-3" controlId="horaDevolucion" value={devolucion.horaDevolucion} onChange={changeHoraPrestamoHandler} >
                     <Form.Label>Hora</Form.Label>
                     <Form.Control type="time" placeholder="Hora" />
                 </Form.Group>
                 <br></br>
                 <Form.Group className="mb-3">
                     <Form.Label htmlFor="estadoDevolucion">Estado Devolucion</Form.Label>
-                    <Form.Select value={devolucion.estadoDevolucion} id="estadoDevolucion">
-                        <option selected="true">Con daños</option>
-                        <option>Buen estado</option>                        
+                    <Form.Select value={devolucion.estadoDevolucion} id="estadoDevolucion" onChange={changeEstadoDevolucionHandler}>
+                        <option value="0">Buen estado</option>                        
+                        <option value="1" selected="true">Con daños</option>                        
                     </Form.Select>
                 </Form.Group>
+                <br></br>
+                <Form.Group className="mb-3" controlId="contadorDanos" value = {devolucion.contadorDanos} onChange={changeContadorDanosHandler}>
+                        <Form.Label className="agregar">Cantidad Daños:</Form.Label>
+                        <Form.Control className="agregar" type="text" name="contadorDanos" placeholder='Contados Daños'/>
+                </Form.Group>
+                <br></br>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="Proyector">Epson</Form.Label>
+                    <Form.Select value={devolucion.proyector} id="proyector" onChange={changeProyectorHandler}>
+                        <option value="1"selected="true">Epson</option>
+                        <option value="2">ViewSonic</option>                        
+                    </Form.Select>
+                </Form.Group>
+                
                 <Button className="boton" onClick={ingresarDevolucion}>Registrar Prestamo</Button>
             </Form>
         </div>
