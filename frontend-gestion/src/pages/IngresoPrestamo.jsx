@@ -9,12 +9,15 @@ import Button from 'react-bootstrap/Button';
  function IngresoPrestamo(props){
 
     const initialState = {
-        fecha: '',
-        hora: '',
-        profesor: '',
-        motivoArriendo: '',
-        horasArriendo: '',
-        proyector: '',
+        
+        id:'1',
+        cantidadHoras:'',
+        descripcionUso:'',
+        fechaPrestamo:'',
+        horaPrestamo:'',        
+        marcaProyector:'',
+        profesor:''
+
     }
 
     const [prestamo, setPrestamo] = useState(initialState);
@@ -24,14 +27,30 @@ import Button from 'react-bootstrap/Button';
         navigate("/");
     };
 
-    /*const changeFechaHandler = event => {
-        setPrestamo({ ...prestamo, fecha: event.target.value });
+    const changeHorasHandler = event => {
+        setPrestamo({ ...prestamo, cantidadHoras: event.target.value });
     };
 
-    const changeHorasArriendoHandler = event => {
-        setPrestamo({ ...prestamo, horasArriendo: event.target.value });
-    };*/
+    const changeUsoHandler = event => {
+        setPrestamo({ ...prestamo, descripcionUso: event.target.value });
+    };
 
+    const changefechaPrestamoHandler = event => {
+        setPrestamo({ ...prestamo, fechaPrestamo: event.target.value });
+    };
+
+    const changehoraPrestamoHandler = event => {
+        setPrestamo({ ...prestamo, horaPrestamo: event.target.value });
+    };
+
+    const changeMarcaHandler = event => {
+        setPrestamo({ ...prestamo, marcaProyector: event.target.value });
+    };
+
+    const changeProfesorHandler = event => {
+        setPrestamo({ ...prestamo, profesor: event.target.value });
+    };
+    
     
     const ingresarPrestamo = (prestamo) => {
         Swal.fire({
@@ -47,12 +66,15 @@ import Button from 'react-bootstrap/Button';
             if (result.isConfirmed) {
                 console.log(prestamo);
                 let nuevoPrestamo = {
+                    //id: prestamo.id,
                     profesor: prestamo.profesor,
-                    fecha: prestamo.fecha,
-                    hora: prestamo.hora,
-                    motivoArriendo: prestamo.motivoArriendo,
-                    horasArriendo: prestamo.horasArriendo,
-                    proyector: prestamo.proyector,
+                    fechaPrestamo: prestamo.fechaPrestamo,
+                    cantidadHoras: prestamo.cantidadHoras,
+                    descripcionUso: prestamo.descripcionUso,                    
+                    marcaProyector: prestamo.marcaProyector,
+                    horaPrestamo: prestamo.horaPrestamo                
+                    
+                    
                 };
                 console.log(nuevoPrestamo);
                 PrestamoService.registrarPrestamo(nuevoPrestamo);
@@ -75,50 +97,42 @@ import Button from 'react-bootstrap/Button';
         <div align="center">
             <h1>Registrar Préstamo de Proyector</h1>
             <Form>
-
-                <Form.Group className="mb-3" controlId="profesor" value={prestamo.profesor}>
-                    <Form.Label>Profesor</Form.Label>
-                    <Form.Control type="text" placeholder="Profesor" />
-                </Form.Group>
-                <br></br>
-                <Form.Group className="mb-3" controlId="fecha" value={prestamo.fecha}>
-                    <Form.Label>Fecha</Form.Label>
-                    <Form.Control type="date" placeholder="Fecha" />
-                </Form.Group>
-                <br></br>
-                <Form.Group className="mb-3" controlId="hora" value={prestamo.hora} >
-                    <Form.Label>Hora</Form.Label>
-                    <Form.Control type="time" placeholder="Hora" />
-                </Form.Group>
-                <br></br>
-                <Form.Group className="mb-3">
-                    <Form.Label htmlFor="usoProyector">Uso proyector</Form.Label>
-                    <Form.Select id="usoProyector">
-                        <option selected="true">Clase</option>
-                        <option value={prestamo.motivoArriendo}>Examen</option>
-                        <option value={prestamo.motivoArriendo}>Reunion</option>
-                    </Form.Select>
-                </Form.Group>
-                <br></br>
-                <Form.Group className="mb-3">
-                    <Form.Label htmlFor="marcaProyector">Marca Proyector</Form.Label>
-                    <Form.Select id="marcaProyector">
-                        <option value={prestamo.proyector} selected="true">Viewsonic</option>
-                        <option value={prestamo.proyector}>Epson</option>                        
-                    </Form.Select>
-                </Form.Group>
-                <br></br>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Group className="mb-3" controlId="profesor" value = {prestamo.profesor} onChange={changeProfesorHandler}>
+                        <Form.Label className="agregar">Profesor:</Form.Label>
+                        <Form.Control className="agregar" type="text" name="profesor" placeholder='Nombre profesor'/>
+                    </Form.Group>
                     <br></br>
-                    <Form.Text className="text-muted">
-                        No comparta su email con nadie.
-                    </Form.Text>
-                </Form.Group>
-                <br></br>
-                <Button className="boton" onClick={ingresarPrestamo}>Registrar Prestamo</Button>
-            </Form>
+                    <Form.Group className="mb-3" controlId="fechaPrestamo" value = {prestamo.fechaPrestamo} onChange={changefechaPrestamoHandler}>
+                        <Form.Label className="agregar">Nombres:</Form.Label>
+                        <Form.Control className="agregar" type="date" name="fechaPrestamo" placeholder='fecha prestamo'/>
+                    </Form.Group>
+                    <br></br>
+                    <Form.Group className="mb-3" controlId="horaPrestamo" value = {prestamo.horaPrestamo} onChange={changeHorasHandler}>
+                        <Form.Label className="agregar">Apellidos:</Form.Label>
+                        <Form.Control className="agregar" type="time" name="horaPrestamo"/>
+                    </Form.Group>
+                    <br></br>
+                    <Form.Group className="mb-3" controlId="descripcionUso">
+                        <Form.Label className="agregar"> Uso Proyector: </Form.Label>
+                        <select className="agregar" name="descripcionUso" required value = {prestamo.descripcionUso} onChange={changeUsoHandler} placeholder='Descripcion uso'>
+                            <option value="no seleccionado" disabled>Seleccione</option>
+                            <option value="clase">clases</option>
+                            <option value="examen">examen titulo</option>
+                            <option value="reunion">reunion</option>
+                        </select>
+                    </Form.Group>
+                    <br></br>
+                    <Form.Group className="mb-3" controlId="marcaProyector">
+                        <Form.Label className="agregar"> Marca Proyector: </Form.Label>
+                        <select className="agregar" name="marcaProyector" required value = {prestamo.marcaProyector} onChange={changeMarcaHandler}>
+                            <option value="0" disabled>Marca</option>
+                            <option value="1">Epson</option>
+                            <option value="2">ViewSonic</option>                            
+                        </select>
+                    </Form.Group>
+                    <br></br>                   
+                    <Button className="boton" onClick={ingresarPrestamo}>Registrar Proveedor</Button>
+                </Form>
 
         </div>
     );

@@ -9,7 +9,7 @@ import Reportes from "../pages/ReporteDevolucionProyectores";
 export function MyRoutes() {
   return (  
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<IngresoPrestamo />} />
         <Route path="/prestamo" element={<IngresoPrestamo />} />
         <Route path="/devolucion" element={<GestionDevolucion />} />
         <Route path="/reporte" element={<Reportes />} />
