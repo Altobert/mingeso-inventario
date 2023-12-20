@@ -3,6 +3,8 @@ package cl.mingeso.msgestion.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -21,15 +23,16 @@ public class Devolucion {
 
     @Id
     @NotNull
-    private Integer idDevolucion;
-    private Date fechaDevolucion;
-    private Date horaDevolucion;
-    private String estadoDevolucion;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+    Date fechaDevolucion;
+    Date horaDevolucion;
+    String estadoDevolucion;
     /*
      * estado devolucion {en buenas condiciones o con daños}
 		 	si profesor devuelve con daños > 2
 		 		queda inabilitado para pedir prestamos 
      */
-    private Integer contadorDanos;
+    Integer contadorDanos;
     
 }
