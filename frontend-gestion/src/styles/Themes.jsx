@@ -69,7 +69,7 @@ export const Dark = {
     bgAlpha: "rgba(0,0,0,.3)",
     bg2: "rgb(30,30,30)",
     bg3: "rgb(50,50,50)",
-    //text: "rgb(210,210,210)",
+    
     primary: "rgb(52, 131, 235)",
     bg4:"#9247FC",
     bgtotal:"#21252B",
