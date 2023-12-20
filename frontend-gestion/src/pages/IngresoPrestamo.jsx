@@ -72,25 +72,53 @@ import Button from 'react-bootstrap/Button';
     };
 
     return (
-        <div>
+        <div align="center">
             <h1>Registrar Préstamo de Proyector</h1>
             <Form>
+
+                <Form.Group className="mb-3" controlId="profesor" value={prestamo.profesor}>
+                    <Form.Label>Profesor</Form.Label>
+                    <Form.Control type="text" placeholder="Profesor" />
+                </Form.Group>
+                <br></br>
                 <Form.Group className="mb-3" controlId="fecha" value={prestamo.fecha}>
                     <Form.Label>Fecha</Form.Label>
                     <Form.Control type="date" placeholder="Fecha" />
                 </Form.Group>
-
+                <br></br>
                 <Form.Group className="mb-3" controlId="hora" value={prestamo.hora} >
                     <Form.Label>Hora</Form.Label>
                     <Form.Control type="time" placeholder="Hora" />
                 </Form.Group>
-
+                <br></br>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="usoProyector">Uso proyector</Form.Label>
+                    <Form.Select id="usoProyector">
+                        <option selected="true">Clase</option>
+                        <option value={prestamo.motivoArriendo}>Examen</option>
+                        <option value={prestamo.motivoArriendo}>Reunion</option>
+                    </Form.Select>
+                </Form.Group>
+                <br></br>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="marcaProyector">Marca Proyector</Form.Label>
+                    <Form.Select id="marcaProyector">
+                        <option value={prestamo.proyector} selected="true">Viewsonic</option>
+                        <option value={prestamo.proyector}>Epson</option>                        
+                    </Form.Select>
+                </Form.Group>
+                <br></br>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" />
+                    <br></br>
+                    <Form.Text className="text-muted">
+                        No comparta su email con nadie.
+                    </Form.Text>
+                </Form.Group>
+                <br></br>
                 <Button className="boton" onClick={ingresarPrestamo}>Registrar Prestamo</Button>
             </Form>
-
-            
-
-            
 
         </div>
     );
