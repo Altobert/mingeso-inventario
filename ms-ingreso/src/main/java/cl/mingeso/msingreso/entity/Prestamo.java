@@ -13,6 +13,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,12 +25,13 @@ import lombok.Setter;
 public class Prestamo {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    Integer idProfesor;
-    Integer idProyector;
-    String fechaPrestamo;
-    String fechaDevolucion;
-    String estadoDevolucion;
+    Date fechaPrestamo;
+    Date horaPrestamo;
+    String descripcionUso;
+    Integer cantidadHoras;
+    String marcaProyector;    
 
 }

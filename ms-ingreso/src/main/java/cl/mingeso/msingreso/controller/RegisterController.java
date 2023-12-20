@@ -23,13 +23,15 @@ public class RegisterController {
 
     @PostMapping("/")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<Prestamo> registrarPrestamo(/*@RequestBody Prestamo prestamo*/){
-        Prestamo prestamo = new Prestamo();
-        prestamo.setIdPrestamo(1);
-        prestamo.setIdProfesor(1);
-        prestamo.setIdProyector(1);
-
-        prestamoService.savePrestamo(prestamo);
+    public ResponseEntity<Prestamo> registrarPrestamo(@RequestBody Prestamo prestamo){
+        Prestamo newprestamo = new Prestamo();
+        newprestamo.setFechaPrestamo(prestamo.getFechaPrestamo());
+        newprestamo.setHoraPrestamo(prestamo.getHoraPrestamo());
+        newprestamo.setDescripcionUso(prestamo.getDescripcionUso());
+        newprestamo.setCantidadHoras(prestamo.getCantidadHoras());
+        newprestamo.setMarcaProyector(prestamo.getMarcaProyector());
+        prestamoService.savePrestamo(newprestamo);
+                
         return null;
     }
     
