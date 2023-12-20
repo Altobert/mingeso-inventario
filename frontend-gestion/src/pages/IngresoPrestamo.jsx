@@ -29,26 +29,32 @@ import Button from 'react-bootstrap/Button';
 
     const changeHorasHandler = event => {
         setPrestamo({ ...prestamo, cantidadHoras: event.target.value });
+        alert(prestamo.cantidadHoras);
     };
 
     const changeUsoHandler = event => {
         setPrestamo({ ...prestamo, descripcionUso: event.target.value });
+        alert(prestamo.descripcionUso);
     };
 
     const changefechaPrestamoHandler = event => {
         setPrestamo({ ...prestamo, fechaPrestamo: event.target.value });
+        alert(prestamo.fechaPrestamo);
     };
 
     const changehoraPrestamoHandler = event => {
         setPrestamo({ ...prestamo, horaPrestamo: event.target.value });
+
     };
 
     const changeMarcaHandler = event => {
         setPrestamo({ ...prestamo, marcaProyector: event.target.value });
+        alert(prestamo.marcaProyector);
     };
 
     const changeProfesorHandler = event => {
         setPrestamo({ ...prestamo, profesor: event.target.value });
+        alert(prestamo.profesor);
     };
     
     
@@ -72,9 +78,7 @@ import Button from 'react-bootstrap/Button';
                     cantidadHoras: prestamo.cantidadHoras,
                     descripcionUso: prestamo.descripcionUso,                    
                     marcaProyector: prestamo.marcaProyector,
-                    horaPrestamo: prestamo.horaPrestamo                
-                    
-                    
+                    horaPrestamo: prestamo.horaPrestamo                                                        
                 };
                 console.log(nuevoPrestamo);
                 PrestamoService.registrarPrestamo(nuevoPrestamo);
@@ -103,12 +107,12 @@ import Button from 'react-bootstrap/Button';
                     </Form.Group>
                     <br></br>
                     <Form.Group className="mb-3" controlId="fechaPrestamo" value = {prestamo.fechaPrestamo} onChange={changefechaPrestamoHandler}>
-                        <Form.Label className="agregar">Nombres:</Form.Label>
+                        <Form.Label className="agregar">Fecha Prestamo:</Form.Label>
                         <Form.Control className="agregar" type="date" name="fechaPrestamo" placeholder='fecha prestamo'/>
                     </Form.Group>
                     <br></br>
                     <Form.Group className="mb-3" controlId="horaPrestamo" value = {prestamo.horaPrestamo} onChange={changeHorasHandler}>
-                        <Form.Label className="agregar">Apellidos:</Form.Label>
+                        <Form.Label className="agregar">Hora Prestamo:</Form.Label>
                         <Form.Control className="agregar" type="time" name="horaPrestamo"/>
                     </Form.Group>
                     <br></br>
